@@ -3,7 +3,11 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>CamCloneMaster</title>
   <link href="./CamCloneMaster/style.css" rel="stylesheet">
-  <!-- ...其他 head 内容... -->
+  
+  <!-- ADDED: Font Awesome for GitHub icon and Academicons for arXiv icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
   <script>
     MathJax = {
         tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], tags: 'ams', macros: {} },
@@ -16,29 +20,60 @@
       width: 53px; height: auto; vertical-align: middle; margin-right: 2px; position: relative; top: -6px;
     }
 
-    /* --- MODIFIED STYLE FOR AUTHORS --- */
     #authors {
       font-family: Calibri, sans-serif;
       font-size: 18px;
-      /* 1. Removed bold style from the entire line */
       font-weight: normal; 
     }
     #authors a {
-      /* 2. By default, links inherit the parent's color (black) */
       color: inherit; 
       text-decoration: none;
-      /* 3. Ensure no extra spacing is added by the link tag */
       padding: 0;
       margin: 0;
     }
     #authors a:hover {
-      /* 2. On hover, color changes to Morandi blue */
       color: #6a84a3; 
       text-decoration: underline;
     }
-    /* --- END OF MODIFICATION --- */
 
-    /* General styles for all carousels */
+    /* --- ADDED: Styles for Publication Buttons --- */
+    .publication-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px; /* Space between buttons */
+      margin: 20px 0;
+    }
+    .link-block {
+      display: inline-block;
+    }
+    .button.is-dark {
+      background-color: #363636; /* Dark gray background */
+      color: #ffffff; /* White text */
+      border: none;
+      padding: 10px 22px;
+      text-decoration: none; /* Remove underline from link */
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      font-size: 1rem;
+      font-weight: 500;
+      display: inline-flex; /* Align icon and text vertically */
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    .button.is-dark:hover {
+      background-color: #4a4a4a; /* Slightly lighter gray on hover */
+    }
+    .button.is-rounded {
+      border-radius: 9999px; /* This creates the pill shape */
+    }
+    .button .icon {
+      margin-right: 8px; /* Space between icon and text */
+      font-size: 1.2em; /* Make icon slightly larger */
+    }
+    /* --- END OF ADDED STYLES --- */
+
+    /* General styles for all carousels (existing styles below) */
     .video-carousel-container {
       margin-top: 20px;
       margin-bottom: 20px;
@@ -139,104 +174,82 @@
     <h1>
       <img src="./CamCloneMaster/camera.png" alt="Icon" class="title-icon">
       <strong>CamCloneMaster: Enabling Reference-based Camera Control for Video Generation</strong>
-      <!-- <sup>1†</sup> -->
     </h1>
     <p id="authors"><a href="https://luo0207.github.io/yawenluo/">Yawen Luo</a>, <a href="https://jianhongbai.github.io/">Jianhong Bai</a>, <a href="https://xiaoyushi97.github.io/">Xiaoyu Shi</a><sup>†</sup>, <a href="https://menghanxia.github.io/">Menghan Xia</a>, <a href="https://xinntao.github.io/">Xintao Wang</a>, <a href="https://magicwpf.github.io/">Pengfei Wan</a>, <a href="https://openreview.net/profile?id=~Di_ZHANG3">Di Zhang</a>, <a href="https://openreview.net/profile?id=~Kun_Gai1">Kun Gai</a>, <a href="https://tianfan.info/">Tianfan Xue</a><sup>†</sup></p>
     
-    <!-- CODE TO BE ADDED STARTS HERE -->
+    <!-- MODIFIED and STYLED PUBLICATION LINKS -->
     <div class="column has-text-centered">
-      <div class="publication-links">
-
-        <!-- ArXiv abstract Link -->
-        <span class="link-block">
-          <a href="https://arxiv.org/abs/2503.11647" target="_blank"
-            class="external-link button is-normal is-rounded is-dark">
-            <span class="icon"> 
-              <i class="ai ai-arxiv"></i>
+        <div class="publication-links">
+            <!-- ArXiv Link -->
+            <span class="link-block">
+                <a href="https://arxiv.org/abs/2506.03140" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"> 
+                        <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                </a>
             </span>
-            <span>arXiv</span>
-          </a>
-        </span>
-
-        <!-- Github link -->
-        <span class="link-block">
-          <a href="https://github.com/KwaiVGI/ReCamMaster" target="_blank" class="external-link button is-normal is-rounded is-dark">
-            <span class="icon">
-              <i class="fab fa-github"></i>
+            <!-- Github link -->
+            <span class="link-block">
+                <a href="https://luo0207.github.io/CamCloneMaster/" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code (Cooming Soon)</span>
+                </a>
             </span>
-            <span>Code (try ReCamMaster)</span>
-          </a>
-        </span>
-
-        <!-- Hugging Face Demo link with an image icon -->
-        <span class="link-block">
-          <a href="https://huggingface.co/datasets/KwaiVGI/MultiCamVideo-Dataset/" target="_blank" class="external-link button is-normal is-rounded is-dark">
-            <span class="icon">
-              <img src="CamCloneMaster/hf.png" alt="Dataset">
+            <!-- Dataset link with Emoji -->
+            <span class="link-block">
+                <a href="https://huggingface.co/datasets/KwaiVGI/CameraClone-Dataset" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        🤗
+                    </span>
+                    <span>Dataset</span>
+                </a>
             </span>
-            <span>Dataset</span>
-          </a>
-        </span>
-
-      </div>
+        </div>
     </div>
-    <!-- CODE TO BE ADDED ENDS HERE -->
-
+    
     <h3><em>TL;DR</em> <span style="font-weight: normal;">: we propose CamCloneMaster, a framework that enables users to replicate camera movements from reference videos without requiring camera parameters or test-time fine-tuning. CamCloneMaster seamlessly supports reference-based camera control for both I2V and V2V tasks within a unified framework.</span></h3>
     <video width="100%" controls> 
       <source src="./CamCloneMaster/CamCloneMaster_Demo_Final.mp4" type="video/mp4">
     </video><br>
   </div>
+  <!-- The rest of your HTML code remains the same... -->
   <div class="content">
     <h1 style="text-align:center;"><strong>Demos</strong></h1>
     <h2 style="text-align:center;">Camera Controlled Image-to-Video Generation</h2>
-
-    <!-- CAROUSEL INSTANCE 1 - Demos (NOW Autoplay ENABLED) -->
     <div id="videoCarouselDemos1" class="video-carousel-container" tabindex="0">
-      <div class="video-wrapper">
-        <button class="prev-video-btn side-btn" aria-label="上一个视频">❮</button>
-        <video class="carousel-video-player" controls loop muted>
-          <source src="" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        <button class="next-video-btn side-btn" aria-label="下一个视频">❯</button>
-      </div>
-      <div class="video-carousel-controls-bar">
-        <span class="video-counter"></span>
-        <div class="carousel-indicators"></div>
-      </div>
+        <div class="video-wrapper">
+            <button class="prev-video-btn side-btn" aria-label="上一个视频">❮</button>
+            <video class="carousel-video-player" controls loop muted><source src="" type="video/mp4"></video>
+            <button class="next-video-btn side-btn" aria-label="下一个视频">❯</button>
+        </div>
+        <div class="video-carousel-controls-bar">
+            <span class="video-counter"></span>
+            <div class="carousel-indicators"></div>
+        </div>
     </div>
-
     <h2 style="text-align:center;">Camera Controlled Video-to-Video Re-Generation</h2>
-    <!-- CAROUSEL INSTANCE 2 - Demos (Autoplay ENABLED) -->
     <div id="videoCarouselDemos2" class="video-carousel-container" tabindex="0">
-      <div class="video-wrapper">
-        <button class="prev-video-btn side-btn" aria-label="上一个视频">❮</button>
-        <video class="carousel-video-player" controls loop muted>
-          <source src="" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        <button class="next-video-btn side-btn" aria-label="下一个视频">❯</button>
-      </div>
-      <div class="video-carousel-controls-bar">
-        <span class="video-counter"></span>
-        <div class="carousel-indicators"></div>
-      </div>
+        <div class="video-wrapper">
+            <button class="prev-video-btn side-btn" aria-label="上一个视频">❮</button>
+            <video class="carousel-video-player" controls loop muted><source src="" type="video/mp4"></video>
+            <button class="next-video-btn side-btn" aria-label="下一个视频">❯</button>
+        </div>
+        <div class="video-carousel-controls-bar">
+            <span class="video-counter"></span>
+            <div class="carousel-indicators"></div>
+        </div>
     </div>
   </div>
-
   <div class="content">
     <h1 style="text-align:center;"><strong>Comparison Results</strong></h1>
-
     <h2 style="text-align:center;">Camera Controlled Image-to-Video Generation</h2>
-    <!-- CAROUSEL INSTANCE 3 - Comparison (Autoplay) -->
     <div id="videoCarouselComparison1" class="video-carousel-container" tabindex="0">
       <div class="video-wrapper">
         <button class="prev-video-btn side-btn" aria-label="上一个视频">❮</button>
-        <video class="carousel-video-player" controls autoplay loop muted> <!-- autoplay can be here or handled by JS -->
-          <source src="" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+        <video class="carousel-video-player" controls autoplay loop muted><source src="" type="video/mp4"></video>
         <button class="next-video-btn side-btn" aria-label="下一个视频">❯</button>
       </div>
       <div class="video-carousel-controls-bar">
@@ -244,16 +257,11 @@
         <div class="carousel-indicators"></div>
       </div>
     </div>
-
     <h2 style="text-align:center;">Camera Controlled Video-to-Video Re-Generation</h2>
-    <!-- CAROUSEL INSTANCE 4 - Comparison (Autoplay) -->
     <div id="videoCarouselComparison2" class="video-carousel-container" tabindex="0">
       <div class="video-wrapper">
         <button class="prev-video-btn side-btn" aria-label="上一个视频">❮</button>
-        <video class="carousel-video-player" controls autoplay loop muted> <!-- autoplay can be here or handled by JS -->
-          <source src="" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+        <video class="carousel-video-player" controls autoplay loop muted><source src="" type="video/mp4"></video>
         <button class="next-video-btn side-btn" aria-label="下一个视频">❯</button>
       </div>
       <div class="video-carousel-controls-bar">
@@ -262,7 +270,6 @@
       </div>
     </div>
   </div>
-
   <div class="content">
     <h2 style="text-align:center;">Abstract</h2>
     <p>Camera control is crucial for generating expressive and cinematic videos. Existing methods rely on explicit sequences of camera parameters as control conditions, which can be cumbersome for users to construct, particularly for intricate camera movements. To provide a more intuitive camera control method, we propose CamCloneMaster, a framework that enables users to replicate camera movements from reference videos without requiring camera parameters or test-time fine-tuning. CamCloneMaster seamlessly supports reference-based camera control for both Image-to-Video and Video-to-Video tasks within a unified framework. Furthermore, we present the Camera Clone Dataset, a large-scale synthetic dataset designed for camera clone learning, encompassing diverse scenes, subjects, and camera movements. Extensive experiments and user studies demonstrate that CamCloneMaster outperforms existing methods in terms of both camera controllability and visual quality.</p>
@@ -276,7 +283,6 @@
     <h2>Camera Clone Dataset</h2>
     <p> Reference-based camera clone learning requires triple video sets: a camera motion reference video $V_\textrm{cam}$, a content reference video $V_{\textrm{cont}}$, and a target video $V$, which recaptures the scene in $V_{\textrm{cont}}$ with the same camera movement as $V_{\textrm{cam}}$. Building such a dataset in the real world is difficult and label-intensive. Therefore, we collect several 3D scenes as background, and put characters into scenes as foreground, each character is combined with a specific animation. Then, multiple paired camera trajectories are designed and shots are made by rendering in Unreal Engine 5.</p>
     <br>
-    <!-- This video remains autoplay loop muted -->
     <video width="100%" controls autoplay loop muted>
     <source src="./CamCloneMaster/dataset.mp4" type="video/mp4">
     </video>
@@ -290,18 +296,15 @@ class VideoCarousel {
             console.error(`VideoCarousel: Container with ID "${containerId}" not found.`);
             return;
         }
-
         this.videoPaths = videoPaths || [];
         this.currentVideoIndex = 0;
         this.enableAutoplay = enableAutoplay;
-
         this.videoPlayer = this.container.querySelector('.carousel-video-player');
         this.videoSource = this.videoPlayer ? this.videoPlayer.querySelector('source') : null;
         this.prevButton = this.container.querySelector('.prev-video-btn');
         this.nextButton = this.container.querySelector('.next-video-btn');
         this.videoCounterDisplay = this.container.querySelector('.video-counter');
         this.indicatorsContainer = this.container.querySelector('.carousel-indicators');
-
         if (!this.videoPlayer || !this.videoSource || !this.prevButton || !this.nextButton || !this.videoCounterDisplay) {
             console.error(`VideoCarousel (${containerId}): One or more required child elements not found.`);
             return;
@@ -309,20 +312,16 @@ class VideoCarousel {
         if (!this.indicatorsContainer) {
             console.warn(`VideoCarousel (${containerId}): Optional element .carousel-indicators not found. Indicator feature will be disabled.`);
         }
-
         this.init();
     }
-
     init() {
         this.prevButton.addEventListener('click', () => this.showPrevVideo());
         this.nextButton.addEventListener('click', () => this.showNextVideo());
-
         this.container.addEventListener('keydown', (event) => {
             const tagName = event.target.tagName.toLowerCase();
             if (tagName === 'input' || tagName === 'textarea' || tagName === 'select' || event.target.classList.contains('indicator-dot') || event.target.classList.contains('side-btn')) {
                 return;
             }
-
             if (event.key === 'ArrowLeft') {
                 event.preventDefault();
                 this.showPrevVideo();
@@ -331,11 +330,9 @@ class VideoCarousel {
                 this.showNextVideo();
             }
         });
-
         this.createIndicators();
         this.loadVideo(this.currentVideoIndex);
     }
-
     createIndicators() {
         if (!this.indicatorsContainer) return;
         this.indicatorsContainer.innerHTML = '';
@@ -344,7 +341,6 @@ class VideoCarousel {
             return;
         }
         this.indicatorsContainer.style.display = 'inline-block';
-
         this.videoPaths.forEach((_, index) => {
             const dot = document.createElement('span');
             dot.classList.add('indicator-dot');
@@ -362,7 +358,6 @@ class VideoCarousel {
             this.indicatorsContainer.appendChild(dot);
         });
     }
-
     updateActiveIndicator() {
         if (!this.indicatorsContainer || this.videoPaths.length <= 1) return;
         const dots = this.indicatorsContainer.querySelectorAll('.indicator-dot');
@@ -376,7 +371,6 @@ class VideoCarousel {
             }
         });
     }
-
     updateVideoCounter() {
         if (this.videoPaths.length > 0) {
             this.videoCounterDisplay.textContent = `${this.currentVideoIndex + 1} / ${this.videoPaths.length}`;
@@ -384,7 +378,6 @@ class VideoCarousel {
             this.videoCounterDisplay.textContent = "0 / 0";
         }
     }
-
     loadVideo(index) {
         if (this.videoPaths.length === 0) {
             console.warn(`VideoCarousel (${this.container.id}): No videos provided.`);
@@ -396,16 +389,13 @@ class VideoCarousel {
             this.updateActiveIndicator();
             return;
         }
-
         if (index >= 0 && index < this.videoPaths.length) {
             this.currentVideoIndex = index;
             this.videoSource.setAttribute('src', this.videoPaths[this.currentVideoIndex]);
             this.videoPlayer.load();
-
-            this.videoPlayer.loop = true; // All carousel videos loop
-            this.videoPlayer.muted = true; // All carousel videos are muted
-            this.videoPlayer.autoplay = this.enableAutoplay; // Controlled by instance setting
-
+            this.videoPlayer.loop = true;
+            this.videoPlayer.muted = true;
+            this.videoPlayer.autoplay = this.enableAutoplay;
             if (this.enableAutoplay) {
                 const playPromise = this.videoPlayer.play();
                 if (playPromise !== undefined) {
@@ -416,71 +406,51 @@ class VideoCarousel {
             } else {
                  this.videoPlayer.pause();
             }
-
             this.prevButton.disabled = (this.currentVideoIndex === 0);
             this.nextButton.disabled = (this.currentVideoIndex === this.videoPaths.length - 1);
-
             this.updateVideoCounter();
             this.updateActiveIndicator();
-
             this.videoPlayer.style.display = 'block';
             if (this.indicatorsContainer) {
                 this.indicatorsContainer.style.display = (this.videoPaths.length > 1) ? 'inline-block' : 'none';
             }
         }
     }
-
     showPrevVideo() {
         if (this.currentVideoIndex > 0) {
             this.loadVideo(this.currentVideoIndex - 1);
         }
     }
-
     showNextVideo() {
         if (this.currentVideoIndex < this.videoPaths.length - 1) {
             this.loadVideo(this.currentVideoIndex + 1);
         }
     }
 }
-
 document.addEventListener('DOMContentLoaded', function() {
     const carouselDemos1Videos = [
-        "./CamCloneMaster/Demos/I2V/0001.mp4",
-        "./CamCloneMaster/Demos/I2V/0002.mp4",
-        "./CamCloneMaster/Demos/I2V/0003.mp4",
-        "./CamCloneMaster/Demos/I2V/0004.mp4",
+        "./CamCloneMaster/Demos/I2V/0001.mp4", "./CamCloneMaster/Demos/I2V/0002.mp4",
+        "./CamCloneMaster/Demos/I2V/0003.mp4", "./CamCloneMaster/Demos/I2V/0004.mp4",
     ];
-    // Demos1: NOW AUTOPLAY ENABLED
-    new VideoCarousel('videoCarouselDemos1', carouselDemos1Videos, true); // MODIFIED
-
+    new VideoCarousel('videoCarouselDemos1', carouselDemos1Videos, true);
     const carouselDemos2Videos = [
-        "./CamCloneMaster/Demos/V2V/0001.mp4",
-        "./CamCloneMaster/Demos/V2V/0002.mp4",
-        "./CamCloneMaster/Demos/V2V/0003.mp4",
-        "./CamCloneMaster/Demos/V2V/0004.mp4",
-        "./CamCloneMaster/Demos/V2V/0005.mp4",
-        "./CamCloneMaster/Demos/V2V/0006.mp4",
-        "./CamCloneMaster/Demos/V2V/0007.mp4",
-        "./CamCloneMaster/Demos/V2V/0008.mp4",
-        "./CamCloneMaster/Demos/V2V/0009.mp4",
-        "./CamCloneMaster/Demos/V2V/0010.mp4",
+        "./CamCloneMaster/Demos/V2V/0001.mp4", "./CamCloneMaster/Demos/V2V/0002.mp4",
+        "./CamCloneMaster/Demos/V2V/0003.mp4", "./CamCloneMaster/Demos/V2V/0004.mp4",
+        "./CamCloneMaster/Demos/V2V/0005.mp4", "./CamCloneMaster/Demos/V2V/0006.mp4",
+        "./CamCloneMaster/Demos/V2V/0007.mp4", "./CamCloneMaster/Demos/V2V/0008.mp4",
+        "./CamCloneMaster/Demos/V2V/0009.mp4", "./CamCloneMaster/Demos/V2V/0010.mp4",
     ];
-    new VideoCarousel('videoCarouselDemos2', carouselDemos2Videos, true); // Demos2: Autoplay enabled
-
+    new VideoCarousel('videoCarouselDemos2', carouselDemos2Videos, true);
     const carouselComparison1Videos = [
-        "./CamCloneMaster/Comparison/I2V/0001.mp4",
-        "./CamCloneMaster/Comparison/I2V/0002.mp4",
-        "./CamCloneMaster/Comparison/I2V/0003.mp4",
-        "./CamCloneMaster/Comparison/I2V/0004.mp4",
+        "./CamCloneMaster/Comparison/I2V/0001.mp4", "./CamCloneMaster/Comparison/I2V/0002.mp4",
+        "./CamCloneMaster/Comparison/I2V/0003.mp4", "./CamCloneMaster/Comparison/I2V/0004.mp4",
     ];
-    new VideoCarousel('videoCarouselComparison1', carouselComparison1Videos, true); // Comparison1: Autoplay enabled
-
+    new VideoCarousel('videoCarouselComparison1', carouselComparison1Videos, true);
     const carouselComparison2Videos = [
-        "./CamCloneMaster/Comparison/V2V/0001.mp4",
-        "./CamCloneMaster/Comparison/V2V/0002.mp4",
+        "./CamCloneMaster/Comparison/V2V/0001.mp4", "./CamCloneMaster/Comparison/V2V/0002.mp4",
         "./CamCloneMaster/Comparison/V2V/0003.mp4",
     ];
-    new VideoCarousel('videoCarouselComparison2', carouselComparison2Videos, true); // Comparison2: Autoplay enabled
+    new VideoCarousel('videoCarouselComparison2', carouselComparison2Videos, true);
 });
 </script>
 </body>
