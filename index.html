@@ -20,7 +20,7 @@
     }
 
     #authors {
-      font-family: Calibri, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       font-size: 18px;
       font-weight: normal; 
     }
@@ -177,12 +177,46 @@
 </head>
 <body>
   <div class="content">
-    <h1>
-      <img src="./CamCloneMaster/camera.png" alt="Icon" class="title-icon">
-      <strong>CamCloneMaster: Enabling Reference-based Camera Control for Video Generation</strong>
-    </h1>
-    <p id="authors"><a href="https://luo0207.github.io/yawenluo/">Yawen Luo</a>, <a href="https://jianhongbai.github.io/">Jianhong Bai</a>, <a href="https://xiaoyushi97.github.io/">Xiaoyu Shi</a><sup>†</sup>, <a href="https://menghanxia.github.io/">Menghan Xia</a>, <a href="https://xinntao.github.io/">Xintao Wang</a>, <a href="https://magicwpf.github.io/">Pengfei Wan</a>, <a href="https://openreview.net/profile?id=~Di_ZHANG3">Di Zhang</a>, <a href="https://openreview.net/profile?id=~Kun_Gai1">Kun Gai</a>, <a href="https://tianfan.info/">Tianfan Xue</a><sup>†</sup></p>
+
+    <div style="text-align: center;">
+      <img src="./CamCloneMaster/CamCloneMaster_Logo.png" alt="Icon" style="height: 80px; margin-bottom: -20px;">
+      <h1>
+        <strong>Enabling Reference-based Camera Control for Video Generation</strong>
+      </h1>
+    </div>
+
+
+    <!-- START: INSERTED AUTHOR SECTION -->
+    <hr style="border: none; height: 1px; background-color: #e1e4e8; margin: 25px 0;">
+    <div style="text-align: center;">
+
+        <p style="text-align: center; font-size: 1.8em; font-weight: bold; margin-top: 20px; margin-bottom: 25px;">
+            SIGGRAPH Asia 2025
+        </p>
+
+        <div id="authors" style="line-height: 2.0; margin-bottom: 20px;">
+            <span style="margin-right: 15px;"><a href="https://luo0207.github.io/yawenluo/">Yawen Luo</a><sup>1</sup></span>
+            <span style="margin-right: 15px;"><a href="https://jianhongbai.github.io/">Jianhong Bai</a><sup>2</sup></span>
+            <span style="margin-right: 15px;"><a href="https://xiaoyushi97.github.io/">Xiaoyu Shi</a><sup>3✉</sup></span>
+            <span style="margin-right: 15px;"><a href="https://menghanxia.github.io/">Menghan Xia</a><sup>3</sup></span>
+            <span style="margin-right: 15px;"><a href="https://xinntao.github.io/">Xintao Wang</a><sup>3</sup></span>
+            <span style="margin-right: 15px;"><a href="https://magicwpf.github.io/">Pengfei Wan</a><sup>3</sup></span><br>
+            <span style="margin-right: 15px;"><a href="https://openreview.net/profile?id=~Di_ZHANG3">Di Zhang</a><sup>3</sup></span>
+            <span style="margin-right: 15px;"><a href="https://openreview.net/profile?id=~Kun_Gai1">Kun Gai</a><sup>3</sup></span>
+            <span style="margin-right: 15px;"><a href="https://tianfan.info/">Tianfan Xue</a><sup>1✉</sup></span>
+        </div>
+
+        <!-- MODIFIED: Removed <br> tag to make it a single line -->
+        <div style="font-size: 16px; color: #586069; line-height: 1.8;">
+            <span style="margin-right: 25px;"><sup>1</sup>The Chinese University of Hong Kong</span>
+            <span style="margin-right: 25px;"><sup>2</sup>Zhejiang University</span>
+            <span style="margin-right: 25px;"><sup>3</sup>Kuaishou Technology</span>
+            <span style="margin-right: 25px;"><sup>✉</sup>Corresponding author</span>
+        </div>
+    </div>
+    <!-- END: INSERTED AUTHOR SECTION -->
     
+
     <!-- MODIFIED and STYLED PUBLICATION LINKS -->
     <div class="column has-text-centered">
         <!-- 在这里添加一个自定义类 -->
@@ -219,7 +253,7 @@
     
     <h3><em>TL;DR</em> <span style="font-weight: normal;">: we propose CamCloneMaster, a framework that enables users to replicate camera movements from reference videos without requiring camera parameters or test-time fine-tuning. CamCloneMaster seamlessly supports reference-based camera control for both I2V and V2V tasks within a unified framework.</span></h3>
     <video width="100%" controls> 
-      <source src="./CamCloneMaster/CamCloneMaster_Demo_Final.mp4" type="video/mp4">
+      <source src="./CamCloneMaster/Demo.mp4" type="video/mp4">
     </video><br>
   </div>
   <!-- The rest of your HTML code remains the same... -->
