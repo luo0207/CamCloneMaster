@@ -166,6 +166,13 @@
       border-color: #444;
       transform: scale(1.4);
     }
+    .fixed-width-icons .icon {
+        /* width: 1.5em; */
+        display: inline-flex;
+        height: 1.5em;
+        justify-content: center;
+        align-items: center; 
+      }
   </style>
 </head>
 <body>
@@ -178,11 +185,12 @@
     
     <!-- MODIFIED and STYLED PUBLICATION LINKS -->
     <div class="column has-text-centered">
-        <div class="publication-links">
+        <!-- 在这里添加一个自定义类 -->
+        <div class="publication-links fixed-width-icons">
             <!-- ArXiv Link -->
             <span class="link-block">
                 <a href="https://arxiv.org/abs/2506.03140" target="_blank" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"> 
+                    <span class="icon">
                         <i class="ai ai-arxiv"></i>
                     </span>
                     <span>arXiv</span>
@@ -190,11 +198,11 @@
             </span>
             <!-- Github link -->
             <span class="link-block">
-                <a href="https://luo0207.github.io/CamCloneMaster/" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                <a href="https://github.com/KwaiVGI/CamCloneMaster" target="_blank" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                         <i class="fab fa-github"></i>
                     </span>
-                    <span>Code (Cooming Soon)</span>
+                    <span>Code</span>
                 </a>
             </span>
             <!-- Dataset link with Emoji -->
