@@ -41,6 +41,7 @@
       justify-content: center;
       gap: 15px; 
       margin: 20px 0;
+      flex-wrap: wrap;
     }
     .link-block {
       display: inline-block;
@@ -66,9 +67,10 @@
     .button.is-rounded {
       border-radius: 9999px;
     }
+    /* 修改了图标大小，从 1.2em 调整为 1em，视觉更平衡 */
     .button .icon {
       margin-right: 8px;
-      font-size: 1.2em;
+      font-size: 1em; 
     }
 
     /* --- Carousel Styles --- */
@@ -172,31 +174,28 @@
         align-items: center; 
     }
 
-    /* --- CITATION STYLES (NEW) --- */
-    /* Container for the BibTeX block */
+    /* --- CITATION STYLES --- */
     .citation-container {
       position: relative;
-      background-color: #f6f8fa; /* GitHub-like light gray */
+      background-color: #f6f8fa;
       border: 1px solid #d0d7de;
       border-radius: 6px;
       margin-top: 10px;
-      padding: 40px 15px 15px 15px; /* Top padding for the button */
+      padding: 40px 15px 15px 15px;
       font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
     }
 
-    /* The pre tag inside */
     .citation-container pre {
       margin: 0;
       padding: 0;
       border: none;
       background-color: transparent;
-      overflow-x: auto; /* Allow horizontal scroll on mobile */
+      overflow-x: auto;
       font-size: 14px;
       line-height: 1.45;
       color: #1f2328;
     }
 
-    /* The copy button */
     .copy-btn {
       position: absolute;
       top: 8px;
@@ -227,7 +226,7 @@
 
     .copy-btn i {
       color: #57606a;
-      pointer-events: none; /* Icon shouldn't interfere with click */
+      pointer-events: none;
     }
       
   </style>
@@ -275,22 +274,33 @@
     <!-- PUBLICATION LINKS -->
     <div class="column has-text-centered">
         <div class="publication-links fixed-width-icons">
+            <!-- ArXiv -->
             <span class="link-block">
                 <a href="https://arxiv.org/abs/2506.03140" target="_blank" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon"><i class="ai ai-arxiv"></i></span>
                     <span>arXiv</span>
                 </a>
             </span>
+            <!-- Code -->
             <span class="link-block">
                 <a href="https://github.com/KwaiVGI/CamCloneMaster" target="_blank" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon"><i class="fab fa-github"></i></span>
                     <span>Code</span>
                 </a>
             </span>
+            <!-- Dataset -->
             <span class="link-block">
                 <a href="https://huggingface.co/datasets/KwaiVGI/CameraClone-Dataset" target="_blank" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">🤗</span>
                     <span>Dataset</span>
+                </a>
+            </span>
+            <!-- BibTeX Button -->
+            <!-- 这里使用了 style="font-size: 0.9em" 专门缩小引号图标 -->
+            <span class="link-block">
+                <a href="#" id="bibtexLink" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon" style="font-size: 0.9em;"><i class="fas fa-quote-right"></i></span>
+                    <span>BibTeX</span>
                 </a>
             </span>
         </div>
@@ -385,7 +395,7 @@
     <p><strong>Please cite our paper if you find our work helpful.</strong></p>
     
     <div class="citation-container">
-        <!-- Copy Button -->
+        <!-- Copy Button (Bottom) -->
         <button class="copy-btn" id="copyCitationBtn" aria-label="Copy to clipboard">
             <i class="far fa-copy"></i>
         </button>
@@ -542,7 +552,7 @@ class VideoCarousel {
     }
 }
 
-// --- Initialize Carousels and Copy Button ---
+// --- Initialize Carousels and Buttons ---
 document.addEventListener('DOMContentLoaded', function() {
     const carouselDemos1Videos = [
         "./CamCloneMaster/Demos/I2V/0001.mp4", "./CamCloneMaster/Demos/I2V/0002.mp4",
@@ -571,31 +581,45 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
     new VideoCarousel('videoCarouselComparison2', carouselComparison2Videos, true);
 
-    // --- Copy Citation Functionality ---
-    const copyBtn = document.getElementById('copyCitationBtn');
-    const codeElement = document.getElementById('bibtexCode');
-
-    if (copyBtn && codeElement) {
-        copyBtn.addEventListener('click', function() {
-            const textToCopy = codeElement.innerText;
-
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                // Success feedback
-                const icon = copyBtn.querySelector('i');
-                const originalClass = icon.className;
+    // --- Copy Logic Function ---
+    function setupCopyButton(btnId, targetId, changeText = false) {
+        const btn = document.getElementById(btnId);
+        const codeElement = document.getElementById(targetId);
+        
+        if (btn && codeElement) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent default if it's an <a> tag
+                const textToCopy = codeElement.innerText;
                 
-                // Change icon to check
-                icon.className = 'fas fa-check';
-                
-                // Revert after 2 seconds
-                setTimeout(() => {
-                    icon.className = 'far fa-copy'; // Reset to copy icon
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    if (changeText) {
+                        // For the top BibTeX button: Change text to "Copied!"
+                        const textSpan = btn.querySelector('span:last-child');
+                        const originalText = textSpan.innerText;
+                        textSpan.innerText = 'Copied!';
+                        setTimeout(() => {
+                            textSpan.innerText = originalText;
+                        }, 2000);
+                    } else {
+                        // For the bottom icon button: Change icon to check
+                        const icon = btn.querySelector('i');
+                        icon.className = 'fas fa-check';
+                        setTimeout(() => {
+                            icon.className = 'far fa-copy';
+                        }, 2000);
+                    }
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
             });
-        });
+        }
     }
+
+    // Setup Top "BibTeX" Button (Text feedback)
+    setupCopyButton('bibtexLink', 'bibtexCode', true);
+
+    // Setup Bottom "Copy" Icon Button (Icon feedback)
+    setupCopyButton('copyCitationBtn', 'bibtexCode', false);
 });
 </script>
 </body>
