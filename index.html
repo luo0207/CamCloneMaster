@@ -35,44 +35,43 @@
       text-decoration: underline;
     }
 
-    /* --- ADDED: Styles for Publication Buttons --- */
+    /* --- Publication Buttons --- */
     .publication-links {
       display: flex;
       justify-content: center;
-      gap: 15px; /* Space between buttons */
+      gap: 15px; 
       margin: 20px 0;
     }
     .link-block {
       display: inline-block;
     }
     .button.is-dark {
-      background-color: #363636; /* Dark gray background */
-      color: #ffffff; /* White text */
+      background-color: #363636;
+      color: #ffffff;
       border: none;
       padding: 10px 22px;
-      text-decoration: none; /* Remove underline from link */
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      text-decoration: none;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       font-size: 1rem;
       font-weight: 500;
-      display: inline-flex; /* Align icon and text vertically */
+      display: inline-flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       transition: background-color 0.2s ease;
     }
     .button.is-dark:hover {
-      background-color: #4a4a4a; /* Slightly lighter gray on hover */
+      background-color: #4a4a4a;
     }
     .button.is-rounded {
-      border-radius: 9999px; /* This creates the pill shape */
+      border-radius: 9999px;
     }
     .button .icon {
-      margin-right: 8px; /* Space between icon and text */
-      font-size: 1.2em; /* Make icon slightly larger */
+      margin-right: 8px;
+      font-size: 1.2em;
     }
-    /* --- END OF ADDED STYLES --- */
 
-    /* General styles for all carousels (existing styles below) */
+    /* --- Carousel Styles --- */
     .video-carousel-container {
       margin-top: 20px;
       margin-bottom: 20px;
@@ -81,7 +80,7 @@
 
     .video-wrapper {
       position: relative;
-      width: 80%; /* Default width for ALL video blocks */
+      width: 80%;
       margin: 0 auto;
     }
 
@@ -167,12 +166,69 @@
       transform: scale(1.4);
     }
     .fixed-width-icons .icon {
-        /* width: 1.5em; */
         display: inline-flex;
         height: 1.5em;
         justify-content: center;
         align-items: center; 
-      }
+    }
+
+    /* --- CITATION STYLES (NEW) --- */
+    /* Container for the BibTeX block */
+    .citation-container {
+      position: relative;
+      background-color: #f6f8fa; /* GitHub-like light gray */
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      margin-top: 10px;
+      padding: 40px 15px 15px 15px; /* Top padding for the button */
+      font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    }
+
+    /* The pre tag inside */
+    .citation-container pre {
+      margin: 0;
+      padding: 0;
+      border: none;
+      background-color: transparent;
+      overflow-x: auto; /* Allow horizontal scroll on mobile */
+      font-size: 14px;
+      line-height: 1.45;
+      color: #1f2328;
+    }
+
+    /* The copy button */
+    .copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 10px;
+      background-color: #ffffff;
+      color: #24292f;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+      box-shadow: 0 1px 0 rgba(27, 31, 36, 0.04);
+    }
+
+    .copy-btn:hover {
+      background-color: #f3f4f6;
+      border-color: #1f2328;
+    }
+    
+    .copy-btn:active {
+      background-color: #ebecf0;
+      box-shadow: inset 0 1px 0 rgba(27, 31, 36, 0.1);
+    }
+
+    .copy-btn i {
+      color: #57606a;
+      pointer-events: none; /* Icon shouldn't interfere with click */
+    }
       
   </style>
 </head>
@@ -187,7 +243,7 @@
     </div>
 
 
-    <!-- START: INSERTED AUTHOR SECTION -->
+    <!-- AUTHOR SECTION -->
     <hr style="border: none; height: 1px; background-color: #e1e4e8; margin: 25px 0;">
     <div style="text-align: center;">
 
@@ -207,7 +263,6 @@
             <span style="margin-right: 15px;"><a href="https://tianfan.info/">Tianfan Xue</a><sup>1,4✉</sup></span>
         </div>
 
-        <!-- MODIFIED: Removed <br> tag to make it a single line -->
         <div style="font-size: 16px; color: #586069; line-height: 0.8;">
             <span style="margin-right: 25px;"><sup>1</sup>Multimedia Laboratory, The Chinese University of Hong Kong</span>
             <span style="margin-right: 25px;"><sup>2</sup>Zhejiang University</span><br><br>
@@ -216,37 +271,25 @@
             <span style="margin-right: 25px;"><sup>✉</sup>Corresponding author</span>
         </div>
     </div>
-    <!-- END: INSERTED AUTHOR SECTION -->
     
-
-    <!-- MODIFIED and STYLED PUBLICATION LINKS -->
+    <!-- PUBLICATION LINKS -->
     <div class="column has-text-centered">
-        <!-- 在这里添加一个自定义类 -->
         <div class="publication-links fixed-width-icons">
-            <!-- ArXiv Link -->
             <span class="link-block">
                 <a href="https://arxiv.org/abs/2506.03140" target="_blank" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                        <i class="ai ai-arxiv"></i>
-                    </span>
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
                     <span>arXiv</span>
                 </a>
             </span>
-            <!-- Github link -->
             <span class="link-block">
                 <a href="https://github.com/KwaiVGI/CamCloneMaster" target="_blank" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                        <i class="fab fa-github"></i>
-                    </span>
+                    <span class="icon"><i class="fab fa-github"></i></span>
                     <span>Code</span>
                 </a>
             </span>
-            <!-- Dataset link with Emoji -->
             <span class="link-block">
                 <a href="https://huggingface.co/datasets/KwaiVGI/CameraClone-Dataset" target="_blank" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                        🤗
-                    </span>
+                    <span class="icon">🤗</span>
                     <span>Dataset</span>
                 </a>
             </span>
@@ -258,7 +301,7 @@
       <source src="./CamCloneMaster/Demo.mp4" type="video/mp4">
     </video><br>
   </div>
-  <!-- The rest of your HTML code remains the same... -->
+
   <div class="content">
     <h1 style="text-align:center;"><strong>Demos</strong></h1>
     <h2 style="text-align:center;">Camera Controlled Image-to-Video Generation</h2>
@@ -286,6 +329,7 @@
         </div>
     </div>
   </div>
+
   <div class="content">
     <h1 style="text-align:center;"><strong>Comparison Results</strong></h1>
     <h2 style="text-align:center;">Camera Controlled Image-to-Video Generation</h2>
@@ -313,15 +357,18 @@
       </div>
     </div>
   </div>
+
   <div class="content">
     <h2 style="text-align:center;">Abstract</h2>
     <p>Camera control is crucial for generating expressive and cinematic videos. Existing methods rely on explicit sequences of camera parameters as control conditions, which can be cumbersome for users to construct, particularly for intricate camera movements. To provide a more intuitive camera control method, we propose CamCloneMaster, a framework that enables users to replicate camera movements from reference videos without requiring camera parameters or test-time fine-tuning. CamCloneMaster seamlessly supports reference-based camera control for both Image-to-Video and Video-to-Video tasks within a unified framework. Furthermore, we present the Camera Clone Dataset, a large-scale synthetic dataset designed for camera clone learning, encompassing diverse scenes, subjects, and camera movements. Extensive experiments and user studies demonstrate that CamCloneMaster outperforms existing methods in terms of both camera controllability and visual quality.</p>
   </div>
+
   <div class="content">
     <h2>Method</h2>
     <p> Given a camera motion reference video and an optional content reference video as inputs, 3D VAE encoder is utilized to convert reference videos into conditional latents $z_\textrm{cam}$ and $z_\textrm{cont}$. We inject the conditional latents into the model by concatenating them with the noise latent along the frame dimension. And only 3D spatial-temporal attention layers in DiT Blocks are trainable modules in the training process.</p>
     <img class="summary-img" src="./CamCloneMaster/network_framework.png" style="width:100%;"> <br>
   </div>
+
   <div class="content">
     <h2>Camera Clone Dataset</h2>
     <p> Reference-based camera clone learning requires triple video sets: a camera motion reference video $V_\textrm{cam}$, a content reference video $V_{\textrm{cont}}$, and a target video $V$, which recaptures the scene in $V_{\textrm{cont}}$ with the same camera movement as $V_{\textrm{cam}}$. Building such a dataset in the real world is difficult and label-intensive. Therefore, we collect several 3D scenes as background, and put characters into scenes as foreground, each character is combined with a specific animation. Then, multiple paired camera trajectories are designed and shots are made by rendering in Unreal Engine 5.</p>
@@ -331,7 +378,31 @@
     </video>
     <br>
   </div>
+
+  <!-- CITATION SECTION -->
+  <div class="content">
+    <h2>Citation</h2>
+    <p><strong>Please cite our paper if you find our work helpful.</strong></p>
+    
+    <div class="citation-container">
+        <!-- Copy Button -->
+        <button class="copy-btn" id="copyCitationBtn" aria-label="Copy to clipboard">
+            <i class="far fa-copy"></i>
+        </button>
+        <!-- BibTeX Content -->
+        <pre><code id="bibtexCode">@inproceedings{luo2025camclonemaster,
+  title={Camclonemaster: Enabling reference-based camera control for video generation},
+  author={Luo, Yawen and Shi, Xiaoyu and Bai, Jianhong and Xia, Menghan and Xue, Tianfan and Wang, Xintao and Wan, Pengfei and Zhang, Di and Gai, Kun},
+  booktitle={Proceedings of the SIGGRAPH Asia 2025 Conference Papers},
+  pages={1--10},
+  year={2025}
+}</code></pre>
+    </div>
+  </div>
+
+<!-- SCRIPTS -->
 <script>
+// --- Video Carousel Script ---
 class VideoCarousel {
     constructor(containerId, videoPaths, enableAutoplay = true) {
         this.container = document.getElementById(containerId);
@@ -470,12 +541,15 @@ class VideoCarousel {
         }
     }
 }
+
+// --- Initialize Carousels and Copy Button ---
 document.addEventListener('DOMContentLoaded', function() {
     const carouselDemos1Videos = [
         "./CamCloneMaster/Demos/I2V/0001.mp4", "./CamCloneMaster/Demos/I2V/0002.mp4",
         "./CamCloneMaster/Demos/I2V/0003.mp4", "./CamCloneMaster/Demos/I2V/0004.mp4",
     ];
     new VideoCarousel('videoCarouselDemos1', carouselDemos1Videos, true);
+    
     const carouselDemos2Videos = [
         "./CamCloneMaster/Demos/V2V/0001.mp4", "./CamCloneMaster/Demos/V2V/0002.mp4",
         "./CamCloneMaster/Demos/V2V/0003.mp4", "./CamCloneMaster/Demos/V2V/0004.mp4",
@@ -484,16 +558,44 @@ document.addEventListener('DOMContentLoaded', function() {
         "./CamCloneMaster/Demos/V2V/0009.mp4", "./CamCloneMaster/Demos/V2V/0010.mp4",
     ];
     new VideoCarousel('videoCarouselDemos2', carouselDemos2Videos, true);
+    
     const carouselComparison1Videos = [
         "./CamCloneMaster/Comparison/I2V/0001.mp4", "./CamCloneMaster/Comparison/I2V/0002.mp4",
         "./CamCloneMaster/Comparison/I2V/0003.mp4", "./CamCloneMaster/Comparison/I2V/0004.mp4",
     ];
     new VideoCarousel('videoCarouselComparison1', carouselComparison1Videos, true);
+    
     const carouselComparison2Videos = [
         "./CamCloneMaster/Comparison/V2V/0001.mp4", "./CamCloneMaster/Comparison/V2V/0002.mp4",
         "./CamCloneMaster/Comparison/V2V/0003.mp4",
     ];
     new VideoCarousel('videoCarouselComparison2', carouselComparison2Videos, true);
+
+    // --- Copy Citation Functionality ---
+    const copyBtn = document.getElementById('copyCitationBtn');
+    const codeElement = document.getElementById('bibtexCode');
+
+    if (copyBtn && codeElement) {
+        copyBtn.addEventListener('click', function() {
+            const textToCopy = codeElement.innerText;
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                // Success feedback
+                const icon = copyBtn.querySelector('i');
+                const originalClass = icon.className;
+                
+                // Change icon to check
+                icon.className = 'fas fa-check';
+                
+                // Revert after 2 seconds
+                setTimeout(() => {
+                    icon.className = 'far fa-copy'; // Reset to copy icon
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        });
+    }
 });
 </script>
 </body>
